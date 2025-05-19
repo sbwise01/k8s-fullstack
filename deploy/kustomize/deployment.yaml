@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8s-fullstack-api
+  labels:
+    app: k8s-fullstack-api
+    service: k8s-fullstack-api
+spec:
+  ports:
+  - port: 5000
+    name: http
+  selector:
+    app: k8s-fullstack-api
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-fullstack-api
+  labels:
+    app: k8s-fullstack-api
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-fullstack-api
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: k8s-fullstack-api
+        version: v1
+    spec:
+      serviceAccountName: k8s-fullstack-api
+      containers:
+      - name: k8s-fullstack-api
+        env:
+        - name: AWS_EXECUTION_ENV
+          value: sbwise-account
+        image: sbwise/k8s-fullstack-api:1.1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
+        resources:
+          limits:
+            cpu: 50m
+            memory: 86Mi
+          requests:
+            cpu: 10m
+            memory: 64Mi
