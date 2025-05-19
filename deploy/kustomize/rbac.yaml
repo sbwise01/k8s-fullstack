@@ -4,3 +4,10 @@ metadata:
   name: k8s-fullstack-api
   labels:
     account: k8s-fullstack-api
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: k8s-fullstack-fe
+  labels:
+    account: k8s-fullstack-fe
