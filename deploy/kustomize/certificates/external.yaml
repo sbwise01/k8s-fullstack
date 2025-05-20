@@ -1,0 +1,19 @@
+# certificate.yaml
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: external
+spec:
+  secretName: external-tls
+  revisionHistoryLimit: 1
+  privateKey:
+    rotationPolicy: Always
+  commonName: k8s-fullstack.aws.bradandmarsha.com
+  dnsNames:
+    - 'k8s-fullstack.aws.bradandmarsha.com'
+    - '*.k8s-fullstack.aws.bradandmarsha.com'
+  usages:
+    - server auth
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
