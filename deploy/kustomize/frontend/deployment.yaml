@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8s-fullstack-fe
+  labels:
+    app: k8s-fullstack-fe
+    service: k8s-fullstack-fe
+spec:
+  ports:
+  - port: 3000
+    name: http
+  selector:
+    app: k8s-fullstack-fe
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-fullstack-fe
+  labels:
+    app: k8s-fullstack-fe
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-fullstack-fe
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: k8s-fullstack-fe
+        version: v1
+    spec:
+      serviceAccountName: k8s-fullstack-fe
+      containers:
+      - name: k8s-fullstack-fe
+        env:
+        - name: API_URL
+          value: http://localhost:5001/
+        image: sbwise/k8s-fullstack-fe:1.1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+        resources:
+          limits:
+            cpu: 100m
+            memory: 256Mi
+          requests:
+            cpu: 10m
+            memory: 64Mi
