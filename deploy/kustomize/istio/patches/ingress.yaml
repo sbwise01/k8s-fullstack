@@ -1,0 +1,15 @@
+- op: add
+  path: /metadata/annotations/service.beta.kubernetes.io~1aws-load-balancer-scheme
+  value: 'internet-facing'
+
+- op: add
+  path: /metadata/annotations/service.beta.kubernetes.io~1aws-load-balancer-type
+  value: nlb
+
+- op: add
+  path: /metadata/annotations/service.beta.kubernetes.io~1aws-load-balancer-backend-protocol
+  value: tcp
+
+- op: add
+  path: /metadata/annotations/external-dns.alpha.kubernetes.io~1hostname
+  value: 'k8s-fullstack.aws.bradandmarsha.com,api.k8s-fullstack.aws.bradandmarsha.com'
