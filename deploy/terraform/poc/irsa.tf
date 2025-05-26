@@ -15,8 +15,11 @@ data "aws_iam_policy_document" "cert_manager_policy_doc" {
       "route53:ChangeResourceRecordSets",
       "route53:ListResourceRecordSets"
     ]
-    effect    = "Allow"
-    resources = [aws_route53_zone.zone.arn]
+    effect = "Allow"
+    resources = [
+      aws_route53_zone.zone.arn,
+      aws_route53_zone.internal_zone.arn
+    ]
 
     condition {
       test     = "ForAllValues:StringEquals"

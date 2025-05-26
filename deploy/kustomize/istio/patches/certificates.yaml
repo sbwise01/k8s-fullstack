@@ -22,5 +22,5 @@ spec:
     - server auth
   # At least one of a DNS Name, URI, or IP address is required.
   dnsNames:
-  - 'k8s-fullstack.aws.bradandmarsha.com'
-  - '*.k8s-fullstack.aws.bradandmarsha.com'
+  - 'internal.aws.bradandmarsha.com'
+  - 'api.internal.aws.bradandmarsha.com'

@@ -11,5 +11,9 @@
   value: tcp
 
 - op: add
+  path: /metadata/annotations/service.beta.kubernetes.io~1aws-load-balancer-cross-zone-load-balancing-enabled
+  value: true
+
+- op: add
   path: /metadata/annotations/external-dns.alpha.kubernetes.io~1hostname
-  value: 'k8s-fullstack.aws.bradandmarsha.com,api.k8s-fullstack.aws.bradandmarsha.com'
+  value: 'internal.aws.bradandmarsha.com,api.internal.aws.bradandmarsha.com'

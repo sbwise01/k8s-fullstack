@@ -8,8 +8,8 @@
 
 - op: add
   path: /spec/template/spec/containers/0/args/-
-  value: '--domain-filter=k8s-fullstack.aws.bradandmarsha.com'
+  value: '--domain-filter=internal.aws.bradandmarsha.com'
 
 - op: add
   path: /spec/template/spec/containers/0/args/-
-  value: '--txt-owner-id=us-east-2:k8s-fullstack.aws.bradandmarsha.com'
+  value: '--txt-owner-id=us-east-2:internal.aws.bradandmarsha.com'

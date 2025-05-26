@@ -4,7 +4,7 @@ module "vpc" {
 
   name = "${local.deployment_name}-main"
 
-  cidr            = "10.11.0.0/16"
+  cidr            = local.vpc_cidr
   azs             = local.azs
   private_subnets = ["10.11.0.0/24", "10.11.1.0/24", "10.11.2.0/24"]
   public_subnets  = ["10.11.3.0/24", "10.11.4.0/24", "10.11.5.0/24"]

@@ -1,0 +1,20 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: internal-k8s-fullstack
+  namespace: istio-system
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    hosts:
+    - "internal.aws.bradandmarsha.com"
+    - "api.internal.aws.bradandmarsha.com"
+    tls:
+      mode: SIMPLE # enables HTTPS on this port
+      credentialName: istio-ingressgateway-certs

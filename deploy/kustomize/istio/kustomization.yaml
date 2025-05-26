@@ -11,6 +11,7 @@ resources:
   - services.yaml
   - webhooks.yaml
   - patches/certificates.yaml
+  - patches/gateways.yaml
   - patches/namespaces.yaml
   - patches/policy-mtls.yaml
 
