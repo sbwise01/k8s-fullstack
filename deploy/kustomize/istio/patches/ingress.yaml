@@ -16,4 +16,7 @@
 
 - op: add
   path: /metadata/annotations/external-dns.alpha.kubernetes.io~1hostname
-  value: 'internal.aws.bradandmarsha.com,api.internal.aws.bradandmarsha.com'
+  value: 'internal.k8s-fullstack.aws.bradandmarsha.com,api.internal.k8s-fullstack.aws.bradandmarsha.com'
+
+- op: remove
+  path: /spec/ports/1

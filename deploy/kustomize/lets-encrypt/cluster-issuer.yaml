@@ -7,7 +7,7 @@ spec:
     solvers:
     - dns01:
         route53:
-          hostedZoneID: Z095080038DYQE2OWNZOP
+          hostedZoneID: Z10054373QGX0F3DGLQA5
     email: brad@bradandmarsha.com
     privateKeySecretRef:
       name: letsencrypt-prod

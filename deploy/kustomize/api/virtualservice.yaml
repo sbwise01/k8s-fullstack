@@ -5,7 +5,7 @@ metadata:
   name: api
 spec:
   hosts:
-  - "api.internal.aws.bradandmarsha.com"
+  - "api.k8s-fullstack.aws.bradandmarsha.com"
   gateways:
   - istio-system/internal-k8s-fullstack
   http:

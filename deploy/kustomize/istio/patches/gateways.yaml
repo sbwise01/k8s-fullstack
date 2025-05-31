@@ -13,8 +13,8 @@ spec:
       name: https
       protocol: HTTPS
     hosts:
-    - "internal.aws.bradandmarsha.com"
-    - "api.internal.aws.bradandmarsha.com"
+    - "k8s-fullstack.aws.bradandmarsha.com"
+    - "api.k8s-fullstack.aws.bradandmarsha.com"
     tls:
       mode: SIMPLE # enables HTTPS on this port
       credentialName: istio-ingressgateway-certs

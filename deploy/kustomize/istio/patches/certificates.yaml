@@ -21,6 +21,11 @@ spec:
   usages:
     - server auth
   # At least one of a DNS Name, URI, or IP address is required.
+  # Internal names kept to enable independent testing through ingress lb
   dnsNames:
-  - 'internal.aws.bradandmarsha.com'
-  - 'api.internal.aws.bradandmarsha.com'
+  - 'k8s-fullstack.aws.bradandmarsha.com'
+  - 'api.k8s-fullstack.aws.bradandmarsha.com'
+  - '*.api.k8s-fullstack.aws.bradandmarsha.com'
+  - 'internal.k8s-fullstack.aws.bradandmarsha.com'
+  - 'api.internal.k8s-fullstack.aws.bradandmarsha.com'
+  - '*.api.internal.k8s-fullstack.aws.bradandmarsha.com'

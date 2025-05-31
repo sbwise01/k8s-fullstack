@@ -1,4 +1,6 @@
 resource "aws_acm_certificate" "cert" {
+  provider = aws.edge-region
+
   domain_name               = local.zone
   subject_alternative_names = ["*.${local.zone}"]
   validation_method         = "DNS"
@@ -9,6 +11,8 @@ resource "aws_acm_certificate" "cert" {
 }
 
 resource "aws_route53_record" "cert_validation" {
+  provider = aws.edge-region
+
   for_each = {
     for dvo in aws_acm_certificate.cert.domain_validation_options : dvo.domain_name => {
       name   = dvo.resource_record_name
@@ -26,6 +30,8 @@ resource "aws_route53_record" "cert_validation" {
 }
 
 resource "aws_acm_certificate_validation" "cert" {
+  provider = aws.edge-region
+
   certificate_arn         = aws_acm_certificate.cert.arn
   validation_record_fqdns = [for record in aws_route53_record.cert_validation : record.fqdn]
 }

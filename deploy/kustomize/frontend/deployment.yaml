@@ -34,9 +34,9 @@ spec:
       serviceAccountName: k8s-fullstack-fe
       containers:
       - name: k8s-fullstack-fe
-        env:
-        - name: API_URL
-          value: https://api.internal.aws.bradandmarsha.com/
+        envFrom:
+          - configMapRef:
+              name: k8s-fullstack-fe
         image: sbwise/k8s-fullstack-fe:1.1.0
         imagePullPolicy: IfNotPresent
         ports:

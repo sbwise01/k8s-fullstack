@@ -5,7 +5,7 @@ metadata:
   name: frontend
 spec:
   hosts:
-  - "internal.aws.bradandmarsha.com"
+  - "k8s-fullstack.aws.bradandmarsha.com"
   gateways:
   - istio-system/internal-k8s-fullstack
   http:
