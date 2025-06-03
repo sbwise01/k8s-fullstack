@@ -13,11 +13,12 @@ resource "aws_cloudfront_distribution" "traffic_edge" {
     }
   }
 
-  enabled = true
   aliases = [
     local.zone,
     local.api
   ]
+  enabled    = true
+  web_acl_id = aws_wafv2_web_acl.traffic_edge.arn
 
   default_cache_behavior {
     allowed_methods          = ["GET", "HEAD", "OPTIONS"]
@@ -26,6 +27,12 @@ resource "aws_cloudfront_distribution" "traffic_edge" {
     cache_policy_id          = aws_cloudfront_cache_policy.traffic_edge_host_origin.id
     origin_request_policy_id = aws_cloudfront_origin_request_policy.traffic_edge_host_origin.id
     viewer_protocol_policy   = "redirect-to-https"
+
+    lambda_function_association {
+      event_type   = "origin-request"
+      lambda_arn   = aws_lambda_function.bot_control_origin_request_edge.qualified_arn
+      include_body = false
+    }
   }
 
   restrictions {

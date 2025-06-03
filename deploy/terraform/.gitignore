@@ -30,3 +30,4 @@ override.tf.json
 # example: *tfplan*
 
 plan.out
+bot_control_origin_request_edge_lambda.zip
