@@ -11,13 +11,14 @@ provider "aws" {
       Team        = "brad"
       Region      = local.region
       Environment = "poc"
+      Workspace   = "edge"
     }
   }
 }
 
 provider "aws" {
-  alias  = "edge-region"
-  region = local.edge_region
+  alias  = "ingress-region"
+  region = local.ingress_region
 
   default_tags {
     tags = {
@@ -27,8 +28,9 @@ provider "aws" {
       Name        = local.deployment_name
       Repository  = "github.com/sbwise01/${local.deployment_name}"
       Team        = "brad"
-      Region      = local.edge_region
+      Region      = local.ingress_region
       Environment = "poc"
+      Workspace   = "edge"
     }
   }
 }

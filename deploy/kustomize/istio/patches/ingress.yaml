@@ -1,6 +1,10 @@
 - op: add
   path: /metadata/annotations/service.beta.kubernetes.io~1aws-load-balancer-scheme
-  value: 'internet-facing'
+  value: 'internal'
+
+- op: add
+  path: /metadata/annotations/service.beta.kubernetes.io~1aws-load-balancer-name
+  value: istio-ingressgateway
 
 - op: add
   path: /metadata/annotations/service.beta.kubernetes.io~1aws-load-balancer-type

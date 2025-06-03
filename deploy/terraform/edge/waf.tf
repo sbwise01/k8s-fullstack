@@ -1,6 +1,4 @@
 resource "aws_wafv2_web_acl" "traffic_edge" {
-  provider = aws.edge-region
-
   name        = "traffic-edge-rules"
   description = "Rules to apply to edge of traffic"
   scope       = "CLOUDFRONT"

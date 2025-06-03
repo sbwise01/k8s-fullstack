@@ -10,7 +10,7 @@ terraform {
 
   backend "s3" {
     bucket = "brad-tf-state"
-    key    = "k8s-fullstack.tfstate"
+    key    = "k8s-fullstack/internal/terraform.tfstate"
     region = "us-east-2"
   }
 }
