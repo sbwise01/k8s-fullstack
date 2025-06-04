@@ -13,7 +13,7 @@ A sandbox implementation of a full software stack running on kubernetes fronted 
 1. Desire to eliminate S3 objects as a software artifact delivery mechanism
    - S3 has very poor support for installing software artifacts (effectively only using an S3 copy command)
    - Software artifact versioning with S3 is bespoke and not industry standard
-   - S3, and the Cloudfront in front of it, provide very limited and basic control over the webserver hosting the content, making a k8s based webserver superior
+   - S3, and the Cloudfront in front of it, provide very limited and basic control over the webserver hosting the content, making a k8s based webserver superior and giving its owners great customization and control over the webserver hosting their content
    - Less duplication of S3 buckets and Cloudfronts to deliver new frontend services
 1. Unification of traffic management behind a cluster deployed Gateway service
    - See [Gateway API](https://gateway-api.sigs.k8s.io/) for future details
