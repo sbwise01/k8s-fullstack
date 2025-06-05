@@ -5,8 +5,6 @@ data "archive_file" "bot_control_origin_request_edge_code" {
 }
 
 resource "aws_lambda_function" "bot_control_origin_request_edge" {
-  provider = aws.edge-region
-
   function_name    = "bot-control-origin-request-edge"
   role             = aws_iam_role.bot_control_origin_request_edge_lambda_execution.arn
   handler          = "lambda.lambda_handler"

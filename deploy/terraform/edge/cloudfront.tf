@@ -1,15 +1,12 @@
 resource "aws_cloudfront_distribution" "traffic_edge" {
-  provider = aws.edge-region
-
   origin {
     domain_name = local.internal
     origin_id   = "internalEKSIngess"
 
-    custom_origin_config {
-      http_port              = "80"
-      https_port             = "443"
-      origin_protocol_policy = "https-only"
-      origin_ssl_protocols   = ["SSLv3", "TLSv1", "TLSv1.1", "TLSv1.2"]
+    vpc_origin_config {
+      origin_keepalive_timeout = "5"
+      origin_read_timeout      = "30"
+      vpc_origin_id            = aws_cloudfront_vpc_origin.internal_origin.id
     }
   }
 
@@ -84,5 +81,20 @@ resource "aws_cloudfront_origin_request_policy" "traffic_edge_host_origin" {
   }
   query_strings_config {
     query_string_behavior = "none"
+  }
+}
+
+resource "aws_cloudfront_vpc_origin" "internal_origin" {
+  vpc_origin_endpoint_config {
+    name                   = "internal-origin"
+    arn                    = data.aws_lb.internal_ingress_lb.arn
+    http_port              = "80"
+    https_port             = "443"
+    origin_protocol_policy = "https-only"
+
+    origin_ssl_protocols {
+      items    = local.ingress_tls_protocols
+      quantity = length(local.ingress_tls_protocols)
+    }
   }
 }
